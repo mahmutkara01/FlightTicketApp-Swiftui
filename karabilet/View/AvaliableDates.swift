@@ -106,7 +106,6 @@ struct AvaliableDates: View {
                             } label: {
                                 AvaliableDatesCell(departureAirport: departureAirport, arrivalAirport: arrivalAirport)
                             }.buttonStyle(PlainButtonStyle())
-
                         }
                     }
                 }

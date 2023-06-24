@@ -27,9 +27,7 @@ class AirportsViewModel: ObservableObject{
                     let result = try JSONDecoder().decode([Airport].self, from: data)
                     DispatchQueue.main.async {
                         self.airports = result
-                        //self.airports = result.filter { $0.iataCode == "SAW" }
                     }
-
                 } else {
                     print("No Data")
                 }
@@ -39,36 +37,5 @@ class AirportsViewModel: ObservableObject{
         }.resume()
 
     }
-    
-    func filterData(filtrele:String){
 
-        let BASE_URL = "https://mahmutkara.net"
-        let PATH = "assets"
-        let API_PATH = "havalimanlari.json"
-        
-        let api = "\(BASE_URL)/\(PATH)/\(API_PATH)"
-        
-        guard let url = URL(string: api) else {return}
-        
-        URLSession.shared.dataTask(with: url) { (data,response,error) in
-            do {
-                if let data = data {
-                    let result = try JSONDecoder().decode([Airport].self, from: data)
-                    DispatchQueue.main.async {
-                        //self.airports = result
-                        self.airports = result.filter { $0.iataCode == filtrele }
-                    }
-
-                } else {
-                    print("No Data")
-                }
-            } catch ( let error) {
-                print(error.localizedDescription)
-            }
-        }.resume()
-
-    }
-    
-    
-    
 }
