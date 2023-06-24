@@ -11,6 +11,12 @@
 		E27D4A192A40F82D0050D958 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A182A40F82D0050D958 /* ContentView.swift */; };
 		E27D4A1B2A40F82E0050D958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E27D4A1A2A40F82E0050D958 /* Assets.xcassets */; };
 		E27D4A1E2A40F82E0050D958 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E27D4A1D2A40F82E0050D958 /* Preview Assets.xcassets */; };
+		E27D4A282A40F8550050D958 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A272A40F8550050D958 /* Home.swift */; };
+		E27D4A2A2A40F8EF0050D958 /* AirportsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A292A40F8EF0050D958 /* AirportsModel.swift */; };
+		E27D4A2C2A40FD160050D958 /* AirportsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A2B2A40FD150050D958 /* AirportsVM.swift */; };
+		E27D4A2F2A41BCF90050D958 /* SelectAirportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A2E2A41BCF90050D958 /* SelectAirportCell.swift */; };
+		E27D4A312A4244870050D958 /* AvaliableDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A302A4244870050D958 /* AvaliableDates.swift */; };
+		E27D4A332A4244C70050D958 /* AvaliableDatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A322A4244C70050D958 /* AvaliableDatesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,13 @@
 		E27D4A182A40F82D0050D958 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E27D4A1A2A40F82E0050D958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E27D4A1D2A40F82E0050D958 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E27D4A272A40F8550050D958 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		E27D4A292A40F8EF0050D958 /* AirportsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsModel.swift; sourceTree = "<group>"; };
+		E27D4A2B2A40FD150050D958 /* AirportsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsVM.swift; sourceTree = "<group>"; };
+		E27D4A2D2A4100CE0050D958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E27D4A2E2A41BCF90050D958 /* SelectAirportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAirportCell.swift; sourceTree = "<group>"; };
+		E27D4A302A4244870050D958 /* AvaliableDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliableDates.swift; sourceTree = "<group>"; };
+		E27D4A322A4244C70050D958 /* AvaliableDatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliableDatesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +64,10 @@
 		E27D4A152A40F82D0050D958 /* karabilet */ = {
 			isa = PBXGroup;
 			children = (
+				E27D4A2D2A4100CE0050D958 /* Info.plist */,
+				E27D4A262A40F83F0050D958 /* ViewModel */,
+				E27D4A252A40F83A0050D958 /* Model */,
+				E27D4A242A40F8350050D958 /* View */,
 				E27D4A162A40F82D0050D958 /* karabiletApp.swift */,
 				E27D4A182A40F82D0050D958 /* ContentView.swift */,
 				E27D4A1A2A40F82E0050D958 /* Assets.xcassets */,
@@ -65,6 +82,33 @@
 				E27D4A1D2A40F82E0050D958 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E27D4A242A40F8350050D958 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E27D4A272A40F8550050D958 /* Home.swift */,
+				E27D4A2E2A41BCF90050D958 /* SelectAirportCell.swift */,
+				E27D4A302A4244870050D958 /* AvaliableDates.swift */,
+				E27D4A322A4244C70050D958 /* AvaliableDatesCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E27D4A252A40F83A0050D958 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E27D4A292A40F8EF0050D958 /* AirportsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E27D4A262A40F83F0050D958 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E27D4A2B2A40FD150050D958 /* AirportsVM.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +182,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E27D4A192A40F82D0050D958 /* ContentView.swift in Sources */,
+				E27D4A2C2A40FD160050D958 /* AirportsVM.swift in Sources */,
+				E27D4A312A4244870050D958 /* AvaliableDates.swift in Sources */,
+				E27D4A282A40F8550050D958 /* Home.swift in Sources */,
+				E27D4A2F2A41BCF90050D958 /* SelectAirportCell.swift in Sources */,
+				E27D4A332A4244C70050D958 /* AvaliableDatesCell.swift in Sources */,
 				E27D4A172A40F82D0050D958 /* karabiletApp.swift in Sources */,
+				E27D4A2A2A40F8EF0050D958 /* AirportsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,11 +320,12 @@
 				DEVELOPMENT_TEAM = UJNM6DX6U3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = karabilet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,11 +350,12 @@
 				DEVELOPMENT_TEAM = UJNM6DX6U3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = karabilet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
