@@ -13,7 +13,10 @@ struct SelectAirportCell: View {
     @State var selectedArrivalAirportID: String
     @State private var DepartureDate = Date()
     @State private var ArrivalDate = Date()
-
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    @State private var shouldNavigate = false
+    
     var body: some View {
 
         VStack{
@@ -93,20 +96,39 @@ struct SelectAirportCell: View {
                             RoundedRectangle(cornerRadius: 15)
                                 .stroke(Color.black.opacity(0.5), lineWidth: 0.5))
 
-                    Button{
-                        
-                    } label: {
-                        NavigationLink(destination: AvaliableDates(departureAirport: viewmodel.airports.first(where: { $0.iataCode == selectedDepartureAirportID }),arrivalAirport: viewmodel.airports.first(where: { $0.iataCode == selectedArrivalAirportID }), viewmodel: viewmodel)) {
-                            Text("Sefer Ara")
-                                .fontWeight(.heavy)
-                                .frame(width: 300,height: 5)
-                                .padding(.vertical,30)
-                                .padding(.horizontal)
-                                .foregroundColor(Color.white)
-                                .background(Color.secondary)
-                                .cornerRadius(15)
-                             }
+                    Button(action: {
+                        if selectedDepartureAirportID.isEmpty || selectedArrivalAirportID.isEmpty {
+                            // Boş uyarısı
+                            alertMessage = "Boş Olamaz"
+                            showAlert = true
+                        } else if selectedDepartureAirportID == selectedArrivalAirportID {
+                            // Aynı havaalanı uyarısı
+                            alertMessage = "Gidiş ve varış havaalanları aynı olamaz."
+                            showAlert = true
+                        } else {
+                            // İşlemleri burada gerçekleştirin
+                            shouldNavigate = true
+                        }
+                    }, label: {
+                        Text("Sefer Ara")
+                            .fontWeight(.heavy)
+                            .frame(width: 300, height: 5)
+                            .padding(.vertical, 30)
+                            .padding(.horizontal)
+                            .foregroundColor(Color.white)
+                            .background(Color.secondary)
+                            .cornerRadius(15)
+                    })
+                    .background(
+                        NavigationLink(destination: AvaliableDates(departureAirport: viewmodel.airports.first(where: { $0.iataCode == selectedDepartureAirportID }), arrivalAirport: viewmodel.airports.first(where: { $0.iataCode == selectedArrivalAirportID }), viewmodel: viewmodel), isActive: $shouldNavigate) {
+                            EmptyView()
+                        }
+                        .hidden()
+                    )
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Uyarı"), message: Text(alertMessage), dismissButton: .default(Text("Tamam")))
                     }
+
                 }
             }
         }.onAppear(perform: {
@@ -121,7 +143,16 @@ struct SelectAirportCell: View {
     static var previews: some View {
         SelectAirportCell(DepartureAirport: "", ArrivalAirport: "")
     }
-} */
+}
+
+ if selectedArrivalAirportID == selectedDepartureAirportID {
+     print("aynı olamaz")
+ } else if selectedArrivalAirportID.isEmpty || selectedDepartureAirportID.isEmpty {
+     print("boş olamaz")
+ } else {
+ print("sorun yok")
+ }
+ */
 
 struct SelectDate: View {
     @Binding var Date: Date

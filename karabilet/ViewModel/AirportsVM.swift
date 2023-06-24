@@ -28,6 +28,7 @@ class AirportsViewModel: ObservableObject{
                     DispatchQueue.main.async {
                         self.airports = result
                     }
+
                 } else {
                     print("No Data")
                 }
