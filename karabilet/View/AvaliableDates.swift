@@ -12,9 +12,12 @@ struct AvaliableDates: View {
     
     var departureAirport: Airport?
     var arrivalAirport: Airport?
-    
+    @State private var showingPaymentPage = false
+    @State private var selectedarrivalAirport: Airport?
+    @State private var selecteddepartureAirport: Airport?
     @ObservedObject var viewmodel: AirportsViewModel
-
+    var PaymentdepartureAirport: Airport?
+    var PaymentarrivalAirport: Airport?
     
     var body: some View {
         VStack {
@@ -81,7 +84,6 @@ struct AvaliableDates: View {
                         Text("hata")
                             .font(.custom("Futura-Medium", size: 25.0, relativeTo: .title3))
                     }
-
                 }
             }
             .padding(.horizontal, 20.0)
@@ -97,27 +99,34 @@ struct AvaliableDates: View {
             .padding(.horizontal,15)
                 
             Spacer()
-            VStack{
-                ScrollView{
-                    ForEach(1..<15){_ in
-                        VStack{
-                            Button{
-                                print("kalkış: \(String(describing: departureAirport?.name)) - varış \(String(describing: arrivalAirport?.name))")
-                            } label: {
-                                AvaliableDatesCell(departureAirport: departureAirport, arrivalAirport: arrivalAirport)
-                            }.buttonStyle(PlainButtonStyle())
-                        }
+            ScrollView{
+                VStack {
+                    ForEach(1..<15) { _ in
+                        VStack {
+                            Button(action: {
+                                showingPaymentPage = true
+                            }, label: {
+                                NavigationView{
+                                    NavigationLink(destination: SeatSelectionView()){
+                                        AvaliableDatesCell(departureAirport: departureAirport, arrivalAirport: arrivalAirport)
+                                    }
+                                }
+                            })
+                            .buttonStyle(PlainButtonStyle())
+                        }/*.sheet(isPresented: $showingPaymentPage) {
+                            PaymentView(departureAirport: departureAirport,arrivalAirport: arrivalAirport)
+                                .presentationDetents([.height(200)])
+                        }*/
                     }
                 }
-                
             }.frame(width: 350,height: 600)
                 .padding(5)
                 .background(Color.gray.opacity(0.2)).cornerRadius(15).padding()
-        }.onAppear{
-            viewmodel.fetchData()
+                
         }
     }
 }
+
 
 /* struct AvaliableDates_Previews: PreviewProvider {
     static var previews: some View {

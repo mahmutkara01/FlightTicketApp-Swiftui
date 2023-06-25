@@ -17,6 +17,9 @@
 		E27D4A2F2A41BCF90050D958 /* SelectAirportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A2E2A41BCF90050D958 /* SelectAirportCell.swift */; };
 		E27D4A312A4244870050D958 /* AvaliableDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A302A4244870050D958 /* AvaliableDates.swift */; };
 		E27D4A332A4244C70050D958 /* AvaliableDatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A322A4244C70050D958 /* AvaliableDatesCell.swift */; };
+		E27D4A352A488CA00050D958 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A342A488CA00050D958 /* PaymentView.swift */; };
+		E27D4A372A48D18D0050D958 /* PaymentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A362A48D18D0050D958 /* PaymentDetailView.swift */; };
+		E27D4A392A48D80E0050D958 /* SeatSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A382A48D80E0050D958 /* SeatSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		E27D4A2E2A41BCF90050D958 /* SelectAirportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAirportCell.swift; sourceTree = "<group>"; };
 		E27D4A302A4244870050D958 /* AvaliableDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliableDates.swift; sourceTree = "<group>"; };
 		E27D4A322A4244C70050D958 /* AvaliableDatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliableDatesCell.swift; sourceTree = "<group>"; };
+		E27D4A342A488CA00050D958 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		E27D4A362A48D18D0050D958 /* PaymentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailView.swift; sourceTree = "<group>"; };
+		E27D4A382A48D80E0050D958 /* SeatSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,9 @@
 				E27D4A2E2A41BCF90050D958 /* SelectAirportCell.swift */,
 				E27D4A302A4244870050D958 /* AvaliableDates.swift */,
 				E27D4A322A4244C70050D958 /* AvaliableDatesCell.swift */,
+				E27D4A342A488CA00050D958 /* PaymentView.swift */,
+				E27D4A362A48D18D0050D958 /* PaymentDetailView.swift */,
+				E27D4A382A48D80E0050D958 /* SeatSelectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +191,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E27D4A192A40F82D0050D958 /* ContentView.swift in Sources */,
+				E27D4A392A48D80E0050D958 /* SeatSelectionView.swift in Sources */,
+				E27D4A352A488CA00050D958 /* PaymentView.swift in Sources */,
+				E27D4A372A48D18D0050D958 /* PaymentDetailView.swift in Sources */,
 				E27D4A2C2A40FD160050D958 /* AirportsVM.swift in Sources */,
 				E27D4A312A4244870050D958 /* AvaliableDates.swift in Sources */,
 				E27D4A282A40F8550050D958 /* Home.swift in Sources */,

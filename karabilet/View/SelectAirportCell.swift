@@ -99,14 +99,13 @@ struct SelectAirportCell: View {
                     Button(action: {
                         if selectedDepartureAirportID.isEmpty || selectedArrivalAirportID.isEmpty {
                             // Boş uyarısı
-                            alertMessage = "Boş Olamaz"
+                            alertMessage = "Lütfen seçim yapınız"
                             showAlert = true
                         } else if selectedDepartureAirportID == selectedArrivalAirportID {
                             // Aynı havaalanı uyarısı
-                            alertMessage = "Gidiş ve varış havaalanları aynı olamaz."
+                            alertMessage = "Kalkış ve varış havaalanları aynı olamaz."
                             showAlert = true
                         } else {
-                            // İşlemleri burada gerçekleştirin
                             shouldNavigate = true
                         }
                     }, label: {
@@ -128,7 +127,6 @@ struct SelectAirportCell: View {
                     .alert(isPresented: $showAlert) {
                         Alert(title: Text("Uyarı"), message: Text(alertMessage), dismissButton: .default(Text("Tamam")))
                     }
-
                 }
             }
         }.onAppear(perform: {
