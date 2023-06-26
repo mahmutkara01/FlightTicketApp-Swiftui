@@ -9,14 +9,14 @@ import SwiftUI
 
 struct SeatSelectionView: View {
     
-    @State var bookedSeats: [Int] = [1,10,25,30,40,59]
+    @State var bookedSeats: [Int] = [0,1,2,10,25,30,41,59,73,54,55]
     @State var selectedSeats : [Int] = []
-    
+
     var body: some View {
         
         let totalSeats = 84
         
-        let leftSide = 1..<totalSeats/2
+        let leftSide = 0..<totalSeats/2
         let rightSide = totalSeats/2..<totalSeats
         
         VStack {
@@ -24,15 +24,16 @@ struct SeatSelectionView: View {
             HStack(spacing: 30){
             let columns = Array(repeating: GridItem(.flexible(),spacing: 10), count: 3)
             
-            LazyVGrid(columns: columns, spacing: 13, content: {
+            LazyVGrid(columns: columns, spacing: 15, content: {
                 ForEach(leftSide, id: \.self) { index in
                     
-                    let seat = index >= 29 ? index - 1 : index
+                    let seat = index >= 10 ? index : index
                     
-                    SeatView(index: index, seat: seat, seatNumber: String(seat), selectedSeats: $selectedSeats, bookedSeats: $bookedSeats)
+                    SeatView(index: index, seat: seat, seatNumber: String(seat+1), selectedSeats: $selectedSeats, bookedSeats: $bookedSeats)
                     
                         .contentShape(Rectangle())
                         .onTapGesture {
+                            
                             if selectedSeats.contains(seat) {
                                 selectedSeats.removeAll{ (removeSeat) -> Bool in
                                     return removeSeat == seat
@@ -44,12 +45,12 @@ struct SeatSelectionView: View {
                 }
             })
             
-            LazyVGrid(columns: columns, spacing: 13, content: {
+            LazyVGrid(columns: columns, spacing: 15, content: {
                 ForEach(rightSide, id: \.self) { index in
                     
-                    let seat = index >= 35 ? index - 2 : index - 1
+                    let seat = index >= 35 ? index : index
                     
-                    SeatView(index: index, seat: seat, seatNumber: String(seat), selectedSeats: $selectedSeats, bookedSeats: $bookedSeats)
+                    SeatView(index: index, seat: seat, seatNumber: String(seat+1), selectedSeats: $selectedSeats, bookedSeats: $bookedSeats)
                         .contentShape(Rectangle())
                         .onTapGesture {
                             if selectedSeats.contains(seat) {
@@ -111,10 +112,10 @@ struct SeatSelectionView: View {
                     Text("Satın Al")
                         .fontWeight(.bold)
                         .foregroundColor(.white)
-                        .padding(.vertical,10)
+                        .padding(.vertical,16)
                         .padding(.horizontal)
                         .frame(maxWidth: .infinity)
-                        .background(Color.purple)
+                        .background(Color.red)
                         .cornerRadius(10)
                 })
             }.padding()
@@ -135,19 +136,27 @@ struct SeatView: View {
         
         ZStack{
             RoundedRectangle(cornerRadius: 6)
-                .stroke(bookedSeats.contains(seat) ? Color.black : Color.purple,lineWidth: 4)
+                .stroke(bookedSeats.contains(seat) ? Color.gray : Color.purple,lineWidth: 4)
                 .frame(height: 30)
                 .background(
                     selectedSeats.contains(seat) ? Color.purple : Color.clear
                 )
-            Text(seatNumber)
-                .foregroundColor(.gray)
-                .fontWeight(.semibold)
-                .font(.callout)
             
             if bookedSeats.contains(seat) {
-                Image(systemName: "xmark")
-                    .foregroundColor(.black)
+                Text("Dolu")
+                    .foregroundColor(.gray)
+                //Image(systemName: "xmark")
+                Text(seatNumber)
+                    .fontWeight(.semibold)
+                    .font(.callout)
+                    .foregroundColor(Color.clear)
+            } else {
+                Text(seatNumber)
+                    .fontWeight(.semibold)
+                    .font(.callout)
+                    .foregroundColor(
+                        selectedSeats.contains(seat) ? Color.white : Color.gray
+                    )
             }
         }
     }
