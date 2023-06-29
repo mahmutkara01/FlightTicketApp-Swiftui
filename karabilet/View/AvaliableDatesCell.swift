@@ -90,9 +90,9 @@ struct AvaliableDatesCell: View {
     }
 }
 
-/*struct AvaliableDatesCell_Previews: PreviewProvider {
+struct AvaliableDatesCell_Previews: PreviewProvider {
     static var previews: some View {
             AvaliableDatesCell()
             
     }
-}*/
+}

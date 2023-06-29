@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct PaymentView: View {
+struct SheetPaymentView: View {
     @State private var showingPaymentPage = false
-
     var departureAirport: Airport?
     var arrivalAirport: Airport?
-    var price: String = "2.500,0₺"
+    var price: String = "2.000,0₺"
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -64,9 +64,8 @@ struct PaymentView: View {
                         Spacer()
                         Button(action: {
                             showingPaymentPage = true
-
                         }, label: {
-                           /* NavigationLink(destination: PaymentDetailView(departureAirport: departureAirport,arrivalAirport: arrivalAirport,price: price)){ */
+                           //NavigationLink(destination: SeatSelectionView()){
                                 Text("Devam et")
                                     .fontWeight(.semibold)
                                     .padding(.vertical,10)
@@ -75,27 +74,27 @@ struct PaymentView: View {
                                     .foregroundColor(.white)
                                     .cornerRadius(20)
                        
-                            /*}*/
+                           // }
                         })
                         .sheet(isPresented: $showingPaymentPage, onDismiss: {
                             // Eğer sayfa kapatıldığında yapılacak bir işlem varsa burada tanımlayabilirsiniz
                         }) {
                             GeometryReader { geometry in
                                 NavigationView {
-                                    PaymentDetailView(departureAirport: departureAirport, arrivalAirport: arrivalAirport, price: price)
+                                    SeatSelectionView(departureAirport: departureAirport,arrivalAirport: arrivalAirport)
                                         .frame(width: geometry.size.width, height: geometry.size.height)
                                 }
                             }
                         }
                     }
                 }
-            }.frame(width: 350)
+            }.frame(maxWidth: 350)
         }
     }
 }
 
- struct PaymentView_Previews: PreviewProvider {
+ struct SheetPaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentView()
+        SheetPaymentView()
     }
 }

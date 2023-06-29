@@ -119,7 +119,7 @@ struct SelectAirportCell: View {
                             .cornerRadius(15)
                     })
                     .background(
-                        NavigationLink(destination: AvaliableDates(departureAirport: viewmodel.airports.first(where: { $0.iataCode == selectedDepartureAirportID }), arrivalAirport: viewmodel.airports.first(where: { $0.iataCode == selectedArrivalAirportID }), viewmodel: viewmodel), isActive: $shouldNavigate) {
+                        NavigationLink(destination: AvaliableDates(departureAirport: viewmodel.airports.first(where: { $0.iataCode == selectedDepartureAirportID }), arrivalAirport: viewmodel.airports.first(where: { $0.iataCode == selectedArrivalAirportID })), isActive: $shouldNavigate) {
                             EmptyView()
                         }
                         .hidden()

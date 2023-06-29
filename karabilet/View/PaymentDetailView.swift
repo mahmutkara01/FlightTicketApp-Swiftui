@@ -11,7 +11,8 @@ struct PaymentDetailView: View {
     
     var departureAirport: Airport?
     var arrivalAirport: Airport?
-    var price: String = ""
+    var sonFiyat: Int = 0
+    var koltuk : [Int] = []
     
     var body: some View {
         VStack{
@@ -34,6 +35,29 @@ struct PaymentDetailView: View {
                         .foregroundColor(.gray)
                 }
             }
+            HStack{
+                VStack(alignment: .leading){
+                    Text("Fiyat")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Text("\(sonFiyat)")
+                        .font(.callout)
+                        .foregroundColor(.gray)
+                }
+                Spacer()
+                VStack{
+                    Text("Koltuk")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    HStack{
+                        ForEach(koltuk, id: \.self) { seat in
+                            Text("\(seat+1)")
+                                .font(.callout)
+                                .foregroundColor(.black)
+                        }
+                    }
+                }
+            }.padding(.top)
         }.frame(width: 260)
     }
 }
