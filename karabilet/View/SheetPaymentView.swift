@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SheetPaymentView: View {
-    @State private var showingPaymentPage = false
+    @State private var seatSelectionSheet = false
     var departureAirport: Airport?
     var arrivalAirport: Airport?
-    var price: String = "2.000,0₺"
+    var sonFiyat: Int = 0
     
     var body: some View {
         NavigationView{
@@ -56,14 +56,14 @@ struct SheetPaymentView: View {
                                 .font(.callout)
                                 .foregroundColor(.gray)
                                 
-                            Text(price)
+                            Text("\(sonFiyat)₺")
                                 .fontWeight(.semibold)
                                 .font(.title2)
                                 .foregroundColor(.black)
                         }
                         Spacer()
                         Button(action: {
-                            showingPaymentPage = true
+                            seatSelectionSheet = true
                         }, label: {
                            //NavigationLink(destination: SeatSelectionView()){
                                 Text("Devam et")
@@ -76,14 +76,10 @@ struct SheetPaymentView: View {
                        
                            // }
                         })
-                        .sheet(isPresented: $showingPaymentPage, onDismiss: {
-                            // Eğer sayfa kapatıldığında yapılacak bir işlem varsa burada tanımlayabilirsiniz
-                        }) {
-                            GeometryReader { geometry in
-                                NavigationView {
-                                    SeatSelectionView(departureAirport: departureAirport,arrivalAirport: arrivalAirport)
-                                        .frame(width: geometry.size.width, height: geometry.size.height)
-                                }
+                        .sheet(isPresented: $seatSelectionSheet) {
+                            VStack {
+                                SeatSelectionView(departureAirport: departureAirport,arrivalAirport: arrivalAirport,sonucFiyat: sonFiyat)
+                                    
                             }
                         }
                     }

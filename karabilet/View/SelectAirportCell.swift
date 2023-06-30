@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SelectAirportCell: View {
     @ObservedObject var viewmodel = AirportsViewModel()
-    @State var selectedDepartureAirportID: String
-    @State var selectedArrivalAirportID: String
+    @State var selectedDepartureAirportID: String = ""
+    @State var selectedArrivalAirportID: String = ""
     @State private var DepartureDate = Date()
     @State private var ArrivalDate = Date()
     @State private var showAlert = false
@@ -25,20 +25,28 @@ struct SelectAirportCell: View {
                     Section {
                         VStack{
                             Picker(selection: $selectedDepartureAirportID) {
-                                ForEach(viewmodel.airports, id: \.iataCode) { item in
-                                    HStack {
-                                        VStack(alignment: .leading, spacing:5){
-                                            Text(item.name + " Havalimanı")
-                                                .font(.headline)
-                                                .font(.system(size: 15))
-                                                .lineLimit(2)
-                                                .tag(item.iataCode)
-                                            Text(item.city)
-                                                .font(.callout)
-                                                .tag(item.iataCode)
-                                        }
-                                        Spacer(minLength: 10)
-                                    }.tag(item.iataCode)
+                                if viewmodel.airports.isEmpty{
+                                    HStack{
+                                        Text("Yükleniyor")
+                                            .padding(5)
+                                        ProgressView()
+                                    }
+                                } else {
+                                    ForEach(viewmodel.airports, id: \.iataCode) { item in
+                                        HStack {
+                                            VStack(alignment: .leading, spacing:5){
+                                                Text(item.name + " Havalimanı")
+                                                    .font(.headline)
+                                                    .font(.system(size: 15))
+                                                    .lineLimit(2)
+                                                    .tag(item.iataCode)
+                                                Text(item.city)
+                                                    .font(.callout)
+                                                    .tag(item.iataCode)
+                                            }
+                                            Spacer(minLength: 10)
+                                        }.tag(item.iataCode)
+                                    }
                                 }
                             } label: {
                                 Image(systemName: "airplane.departure")
@@ -51,19 +59,27 @@ struct SelectAirportCell: View {
                         
                         VStack{
                             Picker(selection: $selectedArrivalAirportID) {
-                                ForEach(viewmodel.airports, id: \.iataCode) { item in
-                                    HStack {
-                                        VStack(alignment: .leading, spacing:5){
-                                            Text(item.name + " Havalimanı")
-                                                .font(.headline)
-                                                .font(.system(size: 15))
-                                                .lineLimit(2)
-                                                .tag(item.iataCode)
-                                            Text(item.city)
-                                                .font(.callout)
-                                        }
-                                        Spacer(minLength: 10)
-                                    }.tag(item.iataCode)
+                                if viewmodel.airports.isEmpty{
+                                    HStack{
+                                        Text("Yükleniyor")
+                                            .padding(5)
+                                        ProgressView()
+                                    }
+                                } else {
+                                    ForEach(viewmodel.airports, id: \.iataCode) { item in
+                                        HStack {
+                                            VStack(alignment: .leading, spacing:5){
+                                                Text(item.name + " Havalimanı")
+                                                    .font(.headline)
+                                                    .font(.system(size: 15))
+                                                    .lineLimit(2)
+                                                    .tag(item.iataCode)
+                                                Text(item.city)
+                                                    .font(.callout)
+                                            }
+                                            Spacer(minLength: 10)
+                                        }.tag(item.iataCode)
+                                    }
                                 }
                             } label: {
                                 Image(systemName: "airplane.arrival")
@@ -137,12 +153,12 @@ struct SelectAirportCell: View {
 }
 
 
-/* struct SelectAirportCell_Previews: PreviewProvider {
+ struct SelectAirportCell_Previews: PreviewProvider {
     static var previews: some View {
-        SelectAirportCell(DepartureAirport: "", ArrivalAirport: "")
+        SelectAirportCell()
     }
 }
-
+/*
  if selectedArrivalAirportID == selectedDepartureAirportID {
      print("aynı olamaz")
  } else if selectedArrivalAirportID.isEmpty || selectedDepartureAirportID.isEmpty {

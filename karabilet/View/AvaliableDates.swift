@@ -12,6 +12,8 @@ struct AvaliableDates: View {
     
     var departureAirport: Airport?
     var arrivalAirport: Airport?
+    var sonFiyat: Int = 2000
+    
     @State private var showingPaymentPage: Bool = false
     var body: some View {
         NavigationView{
@@ -99,11 +101,11 @@ struct AvaliableDates: View {
                                 Button(action: {
                                     showingPaymentPage = true
                                 }, label: {
-                                    AvaliableDatesCell(departureAirport: departureAirport, arrivalAirport: arrivalAirport)
+                                    AvaliableDatesCell(departureAirport: departureAirport, arrivalAirport: arrivalAirport,sonFiyat: sonFiyat)
                                 }).buttonStyle(PlainButtonStyle())
                             }
                             .sheet(isPresented: $showingPaymentPage) {
-                              SheetPaymentView(departureAirport: departureAirport,arrivalAirport: arrivalAirport)
+                                SheetPaymentView(departureAirport: departureAirport,arrivalAirport: arrivalAirport,sonFiyat: sonFiyat)
                               .presentationDetents([.height(200)])
                               }
                         }

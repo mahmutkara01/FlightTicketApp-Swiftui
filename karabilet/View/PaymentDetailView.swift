@@ -27,33 +27,34 @@ struct PaymentDetailView: View {
                 }
                 Spacer()
                 VStack(alignment: .trailing){
-                    Text(departureAirport?.name ?? "Ankara")
+                    Text(arrivalAirport?.name ?? "Ankara")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text(departureAirport?.iataCode ?? "EST")
+                    Text(arrivalAirport?.iataCode ?? "EST")
                         .font(.callout)
                         .foregroundColor(.gray)
                 }
             }
             HStack{
-                VStack(alignment: .leading){
+                VStack(alignment: .leading,spacing: 10){
                     Text("Fiyat")
-                        .font(.title2)
+                        .font(.title3)
                         .fontWeight(.bold)
-                    Text("\(sonFiyat)")
-                        .font(.callout)
+                    Text("\(sonFiyat)₺")
+                        .font(.title)
                         .foregroundColor(.gray)
                 }
                 Spacer()
-                VStack{
+                VStack(alignment: .trailing,spacing: 10){
                     Text("Koltuk")
-                        .font(.title2)
+                        .font(.title3)
                         .fontWeight(.bold)
                     HStack{
                         ForEach(koltuk, id: \.self) { seat in
                             Text("\(seat+1)")
-                                .font(.callout)
-                                .foregroundColor(.black)
+                                .font(.title)
+                                .foregroundColor(.gray)
+                                .lineLimit(2)
                         }
                     }
                 }

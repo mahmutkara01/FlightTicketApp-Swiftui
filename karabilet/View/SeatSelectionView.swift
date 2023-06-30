@@ -15,6 +15,7 @@ struct SeatSelectionView: View {
     var arrivalAirport: Airport?
     @State private var showPaymentDetail = false
     @State private var sonFiyat: Int = 0
+    var sonucFiyat: Int = 0
     
     var body: some View {
         
@@ -23,11 +24,8 @@ struct SeatSelectionView: View {
         let leftSide = 0..<totalSeats/2
         let rightSide = totalSeats/2..<totalSeats
         NavigationView {
-            ScrollView{
-                
-                
+
                 VStack {
-                    
                     HStack(spacing: 30){
                         let columns = Array(repeating: GridItem(.flexible(),spacing: 10), count: 3)
                         
@@ -73,19 +71,23 @@ struct SeatSelectionView: View {
                     }.padding()
                     
                     
-                    HStack(spacing: 15){
-                        RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color.gray)
-                            .frame(width: 20, height: 20)
-                            .overlay(
-                                Image(systemName: "xmark")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                            )
-                        Text("Dolu")
-                            .font(.caption)
-                            .foregroundColor(.gray)
+                    HStack{
                         
+                        HStack {
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(Color.gray)
+                                .frame(width: 20, height: 20)
+                                .overlay(
+                                    Image(systemName: "xmark")
+                                        .font(.caption)
+                                        .foregroundColor(.gray))
+                            
+                            Text("Dolu")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }.padding(.horizontal)
+                        
+                        HStack {
                         RoundedRectangle(cornerRadius: 4)
                             .stroke(Color.purple,lineWidth: 3)
                             .frame(width: 20, height: 20)
@@ -93,7 +95,9 @@ struct SeatSelectionView: View {
                         Text("Boş")
                             .font(.caption)
                             .foregroundColor(.gray)
+                        }.padding(.horizontal)
                         
+                        HStack {
                         RoundedRectangle(cornerRadius: 4)
                             .fill(.purple)
                             .frame(width: 20, height: 20)
@@ -101,7 +105,8 @@ struct SeatSelectionView: View {
                         Text("Seçilen")
                             .font(.caption)
                             .foregroundColor(.gray)
-                    }.padding(.top,10)
+                        }.padding(.horizontal)
+                    }
                     HStack(spacing: 5){
                         Text(departureAirport?.name ?? "hata")
                             .font(.system(size: 15))
@@ -142,14 +147,14 @@ struct SeatSelectionView: View {
                             Text("\(selectedSeats.count) Koltuk")
                                 .font(.caption)
                                 .fontWeight(.bold)
-                            Text("\(selectedSeats.count * 200)₺")
+                            Text("\(selectedSeats.count * sonucFiyat)₺")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
                         }).frame(width: 80)
                         
                         Button(action: {
-                            sonFiyat = (selectedSeats.count * 200)
+                            sonFiyat = (selectedSeats.count * sonucFiyat)
                             print("Fiyat: \(sonFiyat)")
                             showPaymentDetail = true
                             //print("Fiyat: \(selectedSeats.count * 200)")
@@ -167,7 +172,6 @@ struct SeatSelectionView: View {
                         
                     }.padding(.horizontal)
                         .padding(.top,15)
-                }
             }
         }
     }

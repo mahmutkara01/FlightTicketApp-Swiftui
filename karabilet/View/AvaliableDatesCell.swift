@@ -11,6 +11,7 @@ struct AvaliableDatesCell: View {
     
     var departureAirport: Airport?
     var arrivalAirport: Airport?
+    var sonFiyat: Int = 0
     
     var body: some View {
         VStack{
@@ -75,7 +76,7 @@ struct AvaliableDatesCell: View {
                     .font(.system(size: 15))
                     .font(.subheadline)
                 Spacer()
-                Text("2,000.0₺")
+                Text("\(sonFiyat)₺")
                     .font(.system(size: 20))
                     .fontWeight(.semibold)
                     .cornerRadius(15)
