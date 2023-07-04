@@ -20,6 +20,8 @@
 		E27D4A352A488CA00050D958 /* SheetPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A342A488CA00050D958 /* SheetPaymentView.swift */; };
 		E27D4A372A48D18D0050D958 /* PaymentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A362A48D18D0050D958 /* PaymentDetailView.swift */; };
 		E27D4A392A48D80E0050D958 /* SeatSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A382A48D80E0050D958 /* SeatSelectionView.swift */; };
+		E2A5F35A2A51E0D4005B317B /* AvaliableDatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5F3592A51E0D4005B317B /* AvaliableDatesModel.swift */; };
+		E2A5F35C2A51E169005B317B /* AvaliableDatesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5F35B2A51E169005B317B /* AvaliableDatesVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		E27D4A342A488CA00050D958 /* SheetPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPaymentView.swift; sourceTree = "<group>"; };
 		E27D4A362A48D18D0050D958 /* PaymentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailView.swift; sourceTree = "<group>"; };
 		E27D4A382A48D80E0050D958 /* SeatSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatSelectionView.swift; sourceTree = "<group>"; };
+		E2A5F3592A51E0D4005B317B /* AvaliableDatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliableDatesModel.swift; sourceTree = "<group>"; };
+		E2A5F35B2A51E169005B317B /* AvaliableDatesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliableDatesVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				E27D4A292A40F8EF0050D958 /* AirportsModel.swift */,
+				E2A5F3592A51E0D4005B317B /* AvaliableDatesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				E27D4A2B2A40FD150050D958 /* AirportsVM.swift */,
+				E2A5F35B2A51E169005B317B /* AvaliableDatesVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -193,9 +199,11 @@
 				E27D4A192A40F82D0050D958 /* ContentView.swift in Sources */,
 				E27D4A392A48D80E0050D958 /* SeatSelectionView.swift in Sources */,
 				E27D4A352A488CA00050D958 /* SheetPaymentView.swift in Sources */,
+				E2A5F35A2A51E0D4005B317B /* AvaliableDatesModel.swift in Sources */,
 				E27D4A372A48D18D0050D958 /* PaymentDetailView.swift in Sources */,
 				E27D4A2C2A40FD160050D958 /* AirportsVM.swift in Sources */,
 				E27D4A312A4244870050D958 /* AvaliableDates.swift in Sources */,
+				E2A5F35C2A51E169005B317B /* AvaliableDatesVM.swift in Sources */,
 				E27D4A282A40F8550050D958 /* Home.swift in Sources */,
 				E27D4A2F2A41BCF90050D958 /* SelectAirportCell.swift in Sources */,
 				E27D4A332A4244C70050D958 /* AvaliableDatesCell.swift in Sources */,

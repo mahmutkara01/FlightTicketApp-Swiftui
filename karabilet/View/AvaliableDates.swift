@@ -8,13 +8,17 @@
 
 import SwiftUI
 
+extension Int: Identifiable {
+    public var id: Int { self }
+}
+
 struct AvaliableDates: View {
+    @ObservedObject var adviewModel = AvaliableDatesVM()
     
     var departureAirport: Airport?
     var arrivalAirport: Airport?
-    var sonFiyat: Int = 2000
-    
-    @State private var showingPaymentPage: Bool = false
+    @State private var isPresentingData: AvaliableDatesModel? = nil
+
     var body: some View {
         NavigationView{
             VStack {
@@ -96,34 +100,33 @@ struct AvaliableDates: View {
                 Spacer()
                 VStack{
                     ScrollView{
-                        ForEach(1..<15) { _ in
+                        ForEach(adviewModel.avDatesVM) { data in
                             VStack {
                                 Button(action: {
-                                    showingPaymentPage = true
+                                    isPresentingData = data
                                 }, label: {
-                                    AvaliableDatesCell(departureAirport: departureAirport, arrivalAirport: arrivalAirport,sonFiyat: sonFiyat)
+                                    AvaliableDatesCell(departureAirport: departureAirport, arrivalAirport: arrivalAirport,sonFiyat: data.fiyat,kSaat: data.kSaat,vSaat: data.vSaat, tSaat: data.tSaat,kTuru: data.kTuru)
                                 }).buttonStyle(PlainButtonStyle())
                             }
-                            .sheet(isPresented: $showingPaymentPage) {
-                                SheetPaymentView(departureAirport: departureAirport,arrivalAirport: arrivalAirport,sonFiyat: sonFiyat)
-                              .presentationDetents([.height(200)])
-                              }
+                            .sheet(item: $isPresentingData){ data in
+                                SheetPaymentView(departureAirport: departureAirport, arrivalAirport: arrivalAirport, sonFiyat: data.fiyat)
+                                  .presentationDetents([.height(200)])
+                            }
                         }
                     }
+                }.onAppear{
+                    adviewModel.fetchData()
                 }.frame(width: 350,height: 600)
                     .padding(5)
                     .background(Color.gray.opacity(0.2)).cornerRadius(15).padding()
-                
             }
         }
     }
 }
 
 
-/* struct AvaliableDates_Previews: PreviewProvider {
+struct AvaliableDates_Previews: PreviewProvider {
     static var previews: some View {
-        AvaliableDates(viewmodel: Airports)
-            .frame(height: 80.0)
-            .previewLayout(PreviewLayout.sizeThatFits)
+        AvaliableDates()
     }
-} */
+}

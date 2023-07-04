@@ -14,6 +14,7 @@ struct SheetPaymentView: View {
     var sonFiyat: Int = 0
     
     var body: some View {
+        
         NavigationView{
             VStack{
                 HStack{

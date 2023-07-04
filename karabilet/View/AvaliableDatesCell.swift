@@ -12,12 +12,16 @@ struct AvaliableDatesCell: View {
     var departureAirport: Airport?
     var arrivalAirport: Airport?
     var sonFiyat: Int = 0
+    var kSaat: String = ""
+    var vSaat: String = ""
+    var tSaat: String = ""
+    var kTuru: String = ""
     
     var body: some View {
         VStack{
             HStack {
                 VStack(alignment: .leading) {
-                    Text("19.45")
+                    Text(kSaat)
                         .font(.custom("Futura-Medium", size: 20.0, relativeTo: .title3))
                     Text(departureAirport?.name ?? "yok")
                         .font(.caption2)
@@ -35,7 +39,7 @@ struct AvaliableDatesCell: View {
                             .fill(Color.teal)
                             .frame(height: 1.0)
                         
-                       Text("1 Saat")
+                       Text(tSaat)
                             .lineLimit(1)
                             .font(.system(size: 15))
                             .padding(.vertical,2)
@@ -61,7 +65,7 @@ struct AvaliableDatesCell: View {
                 .offset(x: .zero, y: 0)
                 Spacer()
                 VStack(alignment: .trailing) {
-                    Text("20.45")
+                    Text(vSaat)
                         .font(.custom("Futura-Medium", size: 20.0, relativeTo: .title3))
                     Text(arrivalAirport?.name ?? "yok")
                         .font(.caption2)
@@ -72,7 +76,7 @@ struct AvaliableDatesCell: View {
 
             Divider()
             HStack(alignment: .center){
-                Text("Business Class")
+                Text(kTuru)
                     .font(.system(size: 15))
                     .font(.subheadline)
                 Spacer()

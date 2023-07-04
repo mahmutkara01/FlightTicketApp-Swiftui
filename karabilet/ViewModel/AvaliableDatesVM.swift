@@ -1,20 +1,20 @@
 //
-//  AirportsVM.swift
+//  AvaliableDatesVM.swift
 //  karabilet
 //
-//  Created by mahmut kara on 20.06.2023.
+//  Created by mahmut kara on 2.07.2023.
 //
 
 import Foundation
 
-class AirportsViewModel: ObservableObject{
+class AvaliableDatesVM: ObservableObject{
     
-    @Published var airports: [Airport] = []
+    @Published var avDatesVM: [AvaliableDatesModel] = []
     
     func fetchData(){
         let BASE_URL = "https://mahmutkara.net"
         let PATH = "assets"
-        let API_PATH = "havalimanlari.json"
+        let API_PATH = "uygunzamanlar.json"
         
         let api = "\(BASE_URL)/\(PATH)/\(API_PATH)"
         
@@ -23,11 +23,10 @@ class AirportsViewModel: ObservableObject{
         URLSession.shared.dataTask(with: url) { (data,response,error) in
             do {
                 if let data = data {
-                    let result = try JSONDecoder().decode([Airport].self, from: data)
+                    let result = try JSONDecoder().decode([AvaliableDatesModel].self, from: data)
                     DispatchQueue.main.async {
-                        self.airports = result
+                        self.avDatesVM = result
                     }
-
                 } else {
                     print("No Data")
                 }
@@ -36,6 +35,5 @@ class AirportsViewModel: ObservableObject{
             }
         }.resume()
 
-    }
-
+    }   
 }
