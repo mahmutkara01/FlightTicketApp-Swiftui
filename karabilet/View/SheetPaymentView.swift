@@ -28,7 +28,7 @@ struct SheetPaymentView: View {
                                 Text("\(departureAirport?.name ?? "")")
                                     .font(.title3)
                                     .lineLimit(1)
-                            }
+                                }
                             Circle()
                                 .stroke(lineWidth: 2.0)
                                 .fill(Color.teal)
@@ -45,7 +45,7 @@ struct SheetPaymentView: View {
                                 Text("\(arrivalAirport?.name ?? "")")
                                     .font(.title3)
                                     .lineLimit(1)
-                            }
+                                }
                         }
                     }
                 }
@@ -66,16 +66,13 @@ struct SheetPaymentView: View {
                         Button(action: {
                             seatSelectionSheet = true
                         }, label: {
-                           //NavigationLink(destination: SeatSelectionView()){
-                                Text("Devam et")
-                                    .fontWeight(.semibold)
-                                    .padding(.vertical,10)
-                                    .padding(.horizontal,25)
-                                    .background(Color.green)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(20)
-                       
-                           // }
+                            Text("Devam et")
+                                .fontWeight(.semibold)
+                                .padding(.vertical,10)
+                                .padding(.horizontal,25)
+                                .background(Color.green)
+                                .foregroundColor(.white)
+                                .cornerRadius(20)
                         })
                         .sheet(isPresented: $seatSelectionSheet) {
                             VStack {

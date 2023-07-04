@@ -9,10 +9,12 @@ import SwiftUI
 
 struct SeatSelectionView: View {
     
-    @State var bookedSeats: [Int] = [0,1,2,10,25,30,41,59,73,54,55]
+    @State var bookedSeats: [Int] = [0,1,10,25,30,41,59,73,54,55]
     @State var selectedSeats : [Int] = []
     var departureAirport: Airport?
     var arrivalAirport: Airport?
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     @State private var showPaymentDetail = false
     @State private var sonFiyat: Int = 0
     var sonucFiyat: Int = 0
@@ -155,9 +157,12 @@ struct SeatSelectionView: View {
                         
                         Button(action: {
                             sonFiyat = (selectedSeats.count * sonucFiyat)
-                            print("Fiyat: \(sonFiyat)")
-                            showPaymentDetail = true
-                            //print("Fiyat: \(selectedSeats.count * 200)")
+                            if sonFiyat == 0 || selectedSeats.count == 0 {
+                                alertMessage = "Lütfen koltuk seçimi yapınız"
+                                showAlert = true
+                            } else{
+                                showPaymentDetail = true
+                            }
                         }, label: {
                             Text("Satın Al")
                                 .fontWeight(.bold)
@@ -168,8 +173,10 @@ struct SeatSelectionView: View {
                                 .background(Color.red)
                                 .cornerRadius(10)
                         })
-                        .background(NavigationLink("", destination: PaymentDetailView(departureAirport: departureAirport,arrivalAirport: arrivalAirport, sonFiyat: sonFiyat, koltuk: selectedSeats), isActive: $showPaymentDetail))
-                        
+                        .background(NavigationLink("", destination: PaymentDetailView(departureAirport: departureAirport, arrivalAirport: arrivalAirport, sonFiyat: sonFiyat, koltuk: selectedSeats), isActive: $showPaymentDetail))
+                        .alert(isPresented: $showAlert) {
+                            Alert(title: Text("Uyarı"), message: Text(alertMessage), dismissButton: .default(Text("Tamam")))
+                        }
                     }.padding(.horizontal)
                         .padding(.top,15)
             }

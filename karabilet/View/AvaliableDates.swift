@@ -8,10 +8,6 @@
 
 import SwiftUI
 
-extension Int: Identifiable {
-    public var id: Int { self }
-}
-
 struct AvaliableDates: View {
     @ObservedObject var adviewModel = AvaliableDatesVM()
     
@@ -38,7 +34,6 @@ struct AvaliableDates: View {
                                 .font(.custom("Futura-Medium", size: 25.0, relativeTo: .title3))
                         }
                     }
-                    Spacer()
                     VStack {
                         HStack(spacing: .zero) {
                             Circle()
@@ -86,18 +81,22 @@ struct AvaliableDates: View {
                     }
                 }
                 .padding(.horizontal, 20.0)
-                .padding(.top, 20)
+                .padding(.top, 10)
                 .padding(.bottom, 10)
                 .frame(maxWidth: .infinity)
-                .background(Color(UIColor.tertiarySystemBackground))
                 .cornerRadius(12)
                 .overlay(
                     RoundedRectangle(cornerRadius: 15)
                         .stroke(Color.black.opacity(0.5), lineWidth: 2))
                 .cornerRadius(15)
                 .padding(.horizontal,15)
-                
+                .padding(.top,30)
                 Spacer()
+                Button{
+                    adviewModel.fetchData()
+                } label: {
+                    Text("getir")
+                }
                 VStack{
                     ScrollView{
                         ForEach(adviewModel.avDatesVM) { data in
@@ -116,9 +115,10 @@ struct AvaliableDates: View {
                     }
                 }.onAppear{
                     adviewModel.fetchData()
-                }.frame(width: 350,height: 600)
+                }.frame(width: 350,height: 650)
                     .padding(5)
-                    .background(Color.gray.opacity(0.2)).cornerRadius(15).padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(15)
             }
         }
     }
