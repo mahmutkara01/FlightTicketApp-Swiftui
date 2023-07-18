@@ -18,6 +18,7 @@ struct SeatSelectionView: View {
     @State private var showPaymentDetail = false
     @State private var sonFiyat: Int = 0
     var sonucFiyat: Int = 0
+    var kSaat: String = ""
     
     var body: some View {
         
@@ -27,7 +28,11 @@ struct SeatSelectionView: View {
         let rightSide = totalSeats/2..<totalSeats
         NavigationView {
 
-                VStack {
+                VStack(spacing: 5) {
+                    Text("Koltuk Seçimi")
+                        .font(.title2)
+                        .bold()
+                        .lineLimit(1)
                     HStack(spacing: 30){
                         let columns = Array(repeating: GridItem(.flexible(),spacing: 10), count: 3)
                         
@@ -157,10 +162,14 @@ struct SeatSelectionView: View {
                         
                         Button(action: {
                             sonFiyat = (selectedSeats.count * sonucFiyat)
+                            
                             if sonFiyat == 0 || selectedSeats.count == 0 {
                                 alertMessage = "Lütfen koltuk seçimi yapınız"
                                 showAlert = true
-                            } else{
+                            } else if selectedSeats.count > 6{
+                                alertMessage = "En fazla 6 adet koltuk seçebilirsiniz"
+                                showAlert = true
+                            } else {
                                 showPaymentDetail = true
                             }
                         }, label: {
@@ -173,7 +182,7 @@ struct SeatSelectionView: View {
                                 .background(Color.red)
                                 .cornerRadius(10)
                         })
-                        .background(NavigationLink("", destination: PaymentDetailView(departureAirport: departureAirport, arrivalAirport: arrivalAirport, sonFiyat: sonFiyat, koltuk: selectedSeats), isActive: $showPaymentDetail))
+                        .background(NavigationLink("", destination: PaymentDetailView(departureAirport: departureAirport, arrivalAirport: arrivalAirport, sonFiyat: sonFiyat, koltuk: selectedSeats, kSaat: kSaat), isActive: $showPaymentDetail))
                         .alert(isPresented: $showAlert) {
                             Alert(title: Text("Uyarı"), message: Text(alertMessage), dismissButton: .default(Text("Tamam")))
                         }

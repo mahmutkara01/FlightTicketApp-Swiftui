@@ -10,10 +10,11 @@ import SwiftUI
 
 struct AvaliableDates: View {
     @ObservedObject var adviewModel = AvaliableDatesVM()
-    
+
     var departureAirport: Airport?
     var arrivalAirport: Airport?
     @State private var isPresentingData: AvaliableDatesModel? = nil
+   
 
     var body: some View {
         NavigationView{
@@ -92,11 +93,6 @@ struct AvaliableDates: View {
                 .padding(.horizontal,15)
                 .padding(.top,30)
                 Spacer()
-                Button{
-                    adviewModel.fetchData()
-                } label: {
-                    Text("getir")
-                }
                 VStack{
                     ScrollView{
                         ForEach(adviewModel.avDatesVM) { data in
@@ -108,14 +104,14 @@ struct AvaliableDates: View {
                                 }).buttonStyle(PlainButtonStyle())
                             }
                             .sheet(item: $isPresentingData){ data in
-                                SheetPaymentView(departureAirport: departureAirport, arrivalAirport: arrivalAirport, sonFiyat: data.fiyat)
-                                  .presentationDetents([.height(200)])
+                                SheetPaymentView(departureAirport: departureAirport, arrivalAirport: arrivalAirport, sonFiyat: data.fiyat,kSaat: data.kSaat, vSaat: data.vSaat, kTuru: data.kTuru)
+                                  .presentationDetents([.height(300)])
                             }
                         }
                     }
                 }.onAppear{
                     adviewModel.fetchData()
-                }.frame(width: 350,height: 650)
+                }.frame(width: 350,height: 600)
                     .padding(5)
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(15)

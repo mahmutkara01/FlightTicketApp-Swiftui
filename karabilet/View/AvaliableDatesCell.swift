@@ -43,24 +43,24 @@ struct AvaliableDatesCell: View {
     var departureAirport: Airport?
     var arrivalAirport: Airport?
     var sonFiyat: Int = 0
-    var kSaat: String = ""
-    var vSaat: String = ""
-    var tSaat: String = ""
-    var kTuru: String = ""
+    var kSaat: String = "10.55"
+    var vSaat: String = "12.55"
+    var tSaat: String = "2 saat"
+    var kTuru: String = "premium"
     
     var body: some View {
         ZStack{
             MyTicketShape()
-                .frame(width: 350,height: 120)
+                .frame(width: 350,height: 130)
                 .foregroundColor(.white)
                 .cornerRadius(10)
             VStack{
                 HStack {
                     VStack(alignment: .leading) {
                         Text(kSaat)
-                            .font(.custom("Futura-Medium", size: 20.0, relativeTo: .title3))
+                            .font(.custom("Sen-Regular", size: 20.0, relativeTo: .title3))
                         Text(departureAirport?.name ?? "yok")
-                            .font(.caption2)
+                            .font(.custom("Sen-Regular", size: 15))
                             .fontWeight(.semibold)
                             .foregroundColor(.gray)
                     }
@@ -102,9 +102,9 @@ struct AvaliableDatesCell: View {
                     Spacer()
                     VStack(alignment: .trailing) {
                         Text(vSaat)
-                            .font(.custom("Futura-Medium", size: 20.0, relativeTo: .title3))
+                            .font(.custom("Sen-Regular", size: 20.0, relativeTo: .title3))
                         Text(arrivalAirport?.name ?? "yok")
-                            .font(.caption2)
+                            .font(.custom("Sen-Regular", size: 15))
                             .fontWeight(.semibold)
                             .foregroundColor(.gray)
                     }
@@ -117,12 +117,10 @@ struct AvaliableDatesCell: View {
                 
                 HStack(alignment: .center){
                     Text(kTuru)
-                        .font(.system(size: 15))
-                        .font(.subheadline)
+                        .font(.custom("Sen-Bold", size: 15))
                     Spacer()
                     Text("\(sonFiyat)₺")
-                        .font(.system(size: 20))
-                        .fontWeight(.semibold)
+                        .font(.custom("Sen-Bold", size: 20))
                         .cornerRadius(15)
                 }.padding(.top,5)
                 

@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct Home: View {
+    @ObservedObject var viewmodele = TicketDao()
+    @ObservedObject var viewmodel = AirportsViewModel()
+    
     var body: some View {
         ZStack {
             arkaplan()
             
             VStack(spacing:5){
-            HStack(alignment: .center){
+            HStack{
                 Text("Uçak Bileti Satın Al")
-                    .font(.title2)
+                    .font(.custom("Sen-ExtraBold", size: 25))
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .lineLimit(2)
@@ -23,22 +26,38 @@ struct Home: View {
                 Image(systemName: "person.crop.circle")
                     .font(.system(size: 35))
                     .foregroundColor(Color.secondary)
-            }.padding(.horizontal,30)
+            }.padding(.horizontal,35)
             
-            ScrollView{
+            
+            VStack{
+                SelectAirportCell(selectedDepartureAirportID: "", selectedArrivalAirportID: "")
+                    .frame(width: 360,height: 330)
+                    .cornerRadius(30)
+                    .shadow(radius: 5,x:2,y:1)
+                    .padding()
                 
-                VStack{
-                    SelectAirportCell(selectedDepartureAirportID: "", selectedArrivalAirportID: "")
-                        .frame(width: 360,height: 330)
-                        .cornerRadius(30)
-                        .shadow(radius: 5,x:2,y:1)
-                        .padding()
-                    Spacer()
-                }
-                
-            }.frame(maxWidth: .infinity,maxHeight: .infinity)
+                    VStack{
+                        HStack{
+                            NavigationLink(destination: BuyTicketView()) {
+                                Text("Son Uçuşlarım")
+                                    .font(.custom("Sen-Regular", size: 20))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.gray)
+                                    .padding(.leading)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing)
+                                    .bold()
+                            }
+                        }.padding(.horizontal)
+                        ScrollView{
+                            BuyTicketView()
+                    }
+                }.padding(.horizontal)
+            }
         }.padding(.top)
-    }
+        }
     }
 }
 

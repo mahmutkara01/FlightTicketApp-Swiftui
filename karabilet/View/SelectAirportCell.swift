@@ -16,6 +16,7 @@ struct SelectAirportCell: View {
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var shouldNavigate = false
+    @ObservedObject var viewmodele = TicketDao()
     
     var body: some View {
 
@@ -27,21 +28,22 @@ struct SelectAirportCell: View {
                             Picker(selection: $selectedDepartureAirportID) {
                                 if viewmodel.airports.isEmpty{
                                     HStack{
+                                        ProgressView()
                                         Text("Yükleniyor")
                                             .padding(5)
-                                        ProgressView()
+                                        Spacer()
                                     }
                                 } else {
                                     ForEach(viewmodel.airports, id: \.iataCode) { item in
                                         HStack {
                                             VStack(alignment: .leading, spacing:5){
                                                 Text(item.name + " Havalimanı")
-                                                    .font(.headline)
+                                                    .font(.custom("Sen-Bold", size: 20))
                                                     .font(.system(size: 15))
                                                     .lineLimit(2)
                                                     .tag(item.iataCode)
                                                 Text(item.city)
-                                                    .font(.callout)
+                                                    .font(.custom("Sen-Regular", size: 15))
                                                     .tag(item.iataCode)
                                             }
                                             Spacer(minLength: 10)
@@ -61,21 +63,23 @@ struct SelectAirportCell: View {
                             Picker(selection: $selectedArrivalAirportID) {
                                 if viewmodel.airports.isEmpty{
                                     HStack{
+                                        ProgressView()
                                         Text("Yükleniyor")
                                             .padding(5)
-                                        ProgressView()
+                                        Spacer()
                                     }
                                 } else {
                                     ForEach(viewmodel.airports, id: \.iataCode) { item in
                                         HStack {
                                             VStack(alignment: .leading, spacing:5){
                                                 Text(item.name + " Havalimanı")
-                                                    .font(.headline)
+                                                    .font(.custom("Sen-Bold", size: 20))
                                                     .font(.system(size: 15))
                                                     .lineLimit(2)
                                                     .tag(item.iataCode)
                                                 Text(item.city)
-                                                    .font(.callout)
+                                                    .font(.custom("Sen-Regular", size: 15))
+                                                    .tag(item.iataCode)
                                             }
                                             Spacer(minLength: 10)
                                         }.tag(item.iataCode)
@@ -93,8 +97,10 @@ struct SelectAirportCell: View {
                         HStack{
                             VStack(alignment: .leading,spacing: 5){
                                 Text("Gidiş")
+                                    .font(.custom("Sen-Regular", size: 15))
                                     .padding(.leading,10)
                                 SelectDate(Date: $ArrivalDate)
+                                    .font(.custom("Sen-Regular", size: 15))
                             }
                             Divider()
                             VStack(alignment: .leading,spacing: 5){
@@ -115,7 +121,7 @@ struct SelectAirportCell: View {
                     Button(action: {
                         if selectedDepartureAirportID.isEmpty || selectedArrivalAirportID.isEmpty {
                             // Boş uyarısı
-                            alertMessage = "Lütfen seçim yapınız"
+                            alertMessage = "Lütfen havaalanı seçimi yapınız."
                             showAlert = true
                         } else if selectedDepartureAirportID == selectedArrivalAirportID {
                             // Aynı havaalanı uyarısı
@@ -126,12 +132,12 @@ struct SelectAirportCell: View {
                         }
                     }, label: {
                         Text("Sefer Ara")
-                            .fontWeight(.heavy)
+                            .font(.custom("Sen-ExtraBold", size: 20))
                             .frame(width: 300, height: 5)
                             .padding(.vertical, 30)
                             .padding(.horizontal)
                             .foregroundColor(Color.white)
-                            .background(Color.secondary)
+                            .background(Color.red)
                             .cornerRadius(15)
                     })
                     .background(
@@ -145,10 +151,10 @@ struct SelectAirportCell: View {
                     }
                 }
             }
-        }.onAppear(perform: {
+        }.onAppear{
             viewmodel.airports.removeAll()
             viewmodel.fetchData()
-        })
+        }
     }
 }
 

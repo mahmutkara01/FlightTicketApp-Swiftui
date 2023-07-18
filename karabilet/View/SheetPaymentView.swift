@@ -9,57 +9,87 @@ import SwiftUI
 
 struct SheetPaymentView: View {
     @State private var seatSelectionSheet = false
-    var departureAirport: Airport?
-    var arrivalAirport: Airport?
-    var sonFiyat: Int = 0
+    @State var departureAirport: Airport?
+    @State var arrivalAirport: Airport?
+    @State var sonFiyat: Int = 0
+    @State var kSaat: String = "10.55"
+    @State var vSaat: String = "12.55"
+    @State var kTuru: String = "Economy"
     
     var body: some View {
         
         NavigationView{
             VStack{
                 HStack{
-                    VStack(alignment: .leading,spacing: 10) {
+                    VStack(alignment: .leading,spacing: 15) {
                         Text("Özet")
+                            .font(.custom("Sen-Regular", size: 20))
                             .foregroundColor(Color.black)
                             .fontWeight(.black)
-                        HStack{
-                            VStack{
+                        VStack{
+                            HStack{
                                 Image(systemName: "airplane.departure")
-                                Text("\(departureAirport?.name ?? "")")
-                                    .font(.title3)
-                                    .lineLimit(1)
+                                    .frame(width: 15,height: 15)
+                                    .padding(.vertical)
+                                    .padding(.horizontal)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
+                                
+                                VStack(alignment: .leading,spacing: 5){
+                                    Text("\(departureAirport?.name ?? "Sivas Havalimanı")")
+                                        .font(.custom("Sen-Bold", size: 20))
+                                        .lineLimit(1)
+                                    Text("Departure: \(kSaat)")
+                                        .font(.custom("Sen-Regular", size: 15))
+                                        .foregroundColor(.gray)
+                                        .lineLimit(1)
                                 }
-                            Circle()
-                                .stroke(lineWidth: 2.0)
-                                .fill(Color.teal)
-                                .frame(width: 6.0, height: 6.0)
-                            Rectangle()
-                                .fill(Color.teal)
-                                .frame(height: 1.0)
-                            Circle()
-                                .stroke(lineWidth: 2.0)
-                                .fill(Color.teal)
-                                .frame(width: 6.0, height: 6.0)
-                            VStack{
+                                
+                                Spacer()
+                                
+                                }
+
+                            HStack{
                                 Image(systemName: "airplane.arrival")
-                                Text("\(arrivalAirport?.name ?? "")")
-                                    .font(.title3)
-                                    .lineLimit(1)
+                                    .frame(width: 15,height: 15)
+                                    .padding(.vertical)
+                                    .padding(.horizontal)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
+                                
+                                VStack(alignment: .leading,spacing: 5){
+                                    Text("\(arrivalAirport?.name ?? "Sivas Havalimanı")")
+                                        .font(.custom("Sen-Bold", size: 20))
+                                        .lineLimit(1)
+                                    Text("Arrival: \(vSaat)")
+                                        .font(.custom("Sen-Regular", size: 15))
+                                        .foregroundColor(.gray)
+                                        .lineLimit(1)
+                                }
+                                
+                                Spacer()
+                                
                                 }
                         }
                     }
                 }
                 Divider()
+                    .padding(10)
                 VStack(alignment: .leading,spacing: 5){
                     HStack{
-                        VStack(alignment: .leading){
-                            Text("Toplam Fiyat")
-                                .font(.callout)
-                                .foregroundColor(.gray)
+                        VStack(alignment: .leading, spacing: 5){
+                            Text(kTuru)
+                                .font(.custom("Sen-Bold", size: 15))
+                                .padding(.vertical,5)
+                                .padding(.horizontal,10)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
                                 
                             Text("\(sonFiyat)₺")
-                                .fontWeight(.semibold)
-                                .font(.title2)
+                                .font(.custom("Sen-Bold", size: 25))
                                 .foregroundColor(.black)
                         }
                         Spacer()
@@ -67,16 +97,16 @@ struct SheetPaymentView: View {
                             seatSelectionSheet = true
                         }, label: {
                             Text("Devam et")
-                                .fontWeight(.semibold)
-                                .padding(.vertical,10)
-                                .padding(.horizontal,25)
+                                .font(.custom("Sen-ExtraBold", size: 15))
+                                .padding(.vertical,15)
+                                .padding(.horizontal,20)
                                 .background(Color.green)
                                 .foregroundColor(.white)
                                 .cornerRadius(20)
                         })
                         .sheet(isPresented: $seatSelectionSheet) {
                             VStack {
-                                SeatSelectionView(departureAirport: departureAirport,arrivalAirport: arrivalAirport,sonucFiyat: sonFiyat)
+                                SeatSelectionView(departureAirport: departureAirport,arrivalAirport: arrivalAirport,sonucFiyat: sonFiyat, kSaat: kSaat)
                                     
                             }
                         }

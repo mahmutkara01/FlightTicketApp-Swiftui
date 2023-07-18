@@ -12,6 +12,7 @@ class AirportsViewModel: ObservableObject{
     @Published var airports: [Airport] = []
     
     func fetchData(){
+        
         let BASE_URL = "https://mahmutkara.net"
         let PATH = "assets"
         let API_PATH = "havalimanlari.json"
