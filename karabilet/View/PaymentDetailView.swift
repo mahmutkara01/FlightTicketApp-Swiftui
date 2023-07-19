@@ -14,7 +14,8 @@ struct PaymentDetailView: View {
     var sonFiyat: Int = 0
     var koltuk : [Int] = []
     var kSaat: String = ""
-    var ticket_number: String = "MD5243"
+    @State private var ticket_number: String = generateRandomString(length: 6)
+    @State private var terminal_number: String = generateRandomString(length: 2)
     var viewmodel = TicketSaveViewModel()
     @State private var isOnaylaButtonPressed = false
     
@@ -99,7 +100,7 @@ struct PaymentDetailView: View {
                             Text("Terminal")
                                 .font(.custom("Sen-Regular", size: 15))
                                 .foregroundColor(.gray)
-                            Text("B2")
+                            Text(terminal_number)
                                 .font(.custom("Sen-Bold", size: 20))
                                 .bold()
                                 .foregroundColor(.black)
@@ -111,9 +112,11 @@ struct PaymentDetailView: View {
             Button(action: {
                 
                 viewmodel.kaydet(arrival_code: arrivalAirport?.iataCode ?? "hata", arrival_name: arrivalAirport?.city ?? "hata", departure_code: departureAirport?.iataCode ?? "hata", departure_name: departureAirport?.city ?? "hata", ticket_number: ticket_number)
-
+                
                 isOnaylaButtonPressed = true
+
             }) {
+                
                 Text("Onayla")
                     .font(.custom("Sen-ExtraBold", size: 20))
                     .foregroundColor(.white)
@@ -123,16 +126,16 @@ struct PaymentDetailView: View {
                     .background(Color.red)
                     .cornerRadius(10)
             }
-            .fullScreenCover(isPresented: $isOnaylaButtonPressed, content: {
-                Home()
-            })
+
 
         }.padding()
             .background(.white)
             .cornerRadius(20)
             .shadow(radius: 10,x:2,y:4)
             .padding()
-
+            .onAppear {
+                self.ticket_number = generateRandomString(length: 6)
+            }
        /* VStack{
             
             HStack{

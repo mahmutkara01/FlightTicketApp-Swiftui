@@ -51,9 +51,9 @@ struct Home: View {
                                     .bold()
                             }
                         }.padding(.horizontal)
-                        ScrollView{
-                            BuyTicketView()
-                    }
+                        
+                        BuyTicketView()
+                        
                 }.padding(.horizontal)
             }
         }.padding(.top)

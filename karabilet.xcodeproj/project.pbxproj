@@ -14,6 +14,7 @@
 		E2634B352A6717BD00E0E957 /* TicketDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2634B342A6717BD00E0E957 /* TicketDao.swift */; };
 		E2634B382A671ACA00E0E957 /* TicketSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2634B372A671ACA00E0E957 /* TicketSave.swift */; };
 		E2634B3A2A67247000E0E957 /* BuyTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2634B392A67247000E0E957 /* BuyTicketView.swift */; };
+		E2634B3D2A68671800E0E957 /* RandomTicketNumber+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2634B3C2A68671800E0E957 /* RandomTicketNumber+extension.swift */; };
 		E27D4A172A40F82D0050D958 /* karabiletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A162A40F82D0050D958 /* karabiletApp.swift */; };
 		E27D4A192A40F82D0050D958 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D4A182A40F82D0050D958 /* ContentView.swift */; };
 		E27D4A1B2A40F82E0050D958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E27D4A1A2A40F82E0050D958 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		E2634B342A6717BD00E0E957 /* TicketDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDao.swift; sourceTree = "<group>"; };
 		E2634B372A671ACA00E0E957 /* TicketSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketSave.swift; sourceTree = "<group>"; };
 		E2634B392A67247000E0E957 /* BuyTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTicketView.swift; sourceTree = "<group>"; };
+		E2634B3C2A68671800E0E957 /* RandomTicketNumber+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomTicketNumber+extension.swift"; sourceTree = "<group>"; };
 		E27D4A132A40F82D0050D958 /* karabilet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = karabilet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E27D4A162A40F82D0050D958 /* karabiletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = karabiletApp.swift; sourceTree = "<group>"; };
 		E27D4A182A40F82D0050D958 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,14 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		E2634B3B2A68670200E0E957 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E2634B3C2A68671800E0E957 /* RandomTicketNumber+extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E27D4A0A2A40F82D0050D958 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +118,7 @@
 		E27D4A152A40F82D0050D958 /* karabilet */ = {
 			isa = PBXGroup;
 			children = (
+				E2634B3B2A68670200E0E957 /* Extensions */,
 				E2634B362A67198F00E0E957 /* Data */,
 				E2634B2A2A670F7900E0E957 /* Font */,
 				E27D4A2D2A4100CE0050D958 /* Info.plist */,
@@ -239,6 +250,7 @@
 				E27D4A192A40F82D0050D958 /* ContentView.swift in Sources */,
 				E27D4A392A48D80E0050D958 /* SeatSelectionView.swift in Sources */,
 				E27D4A352A488CA00050D958 /* SheetPaymentView.swift in Sources */,
+				E2634B3D2A68671800E0E957 /* RandomTicketNumber+extension.swift in Sources */,
 				E2634B332A67163E00E0E957 /* Model.xcdatamodeld in Sources */,
 				E2A5F35A2A51E0D4005B317B /* AvaliableDatesModel.swift in Sources */,
 				E27D4A372A48D18D0050D958 /* PaymentDetailView.swift in Sources */,
