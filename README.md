@@ -1,4 +1,4 @@
-# Uçak Satın Alma Simülasyonu (SwiftUI)
+# Uçak Bileti Satın Alma Simülasyonu (SwiftUI)
 
 <img src="https://github.com/mahmutkara01/FlightTicketApp-Swiftui/assets/92724610/6ed902f3-ef93-484b-8bf7-375afc7aa786" width="300">
 
