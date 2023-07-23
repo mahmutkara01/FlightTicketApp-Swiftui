@@ -1,6 +1,7 @@
 # Uçak Satın Alma Simülasyonu (SwiftUI)
 
-![mahmutkara-karabilet](https://github.com/mahmutkara01/FlightTicketApp-Swiftui/assets/92724610/e110530e-d80a-4b0e-8c5e-ec9453bb18e5)
+<img src="https://github.com/mahmutkara01/FlightTicketApp-Swiftui/assets/92724610/e110530e-d80a-4b0e-8c5e-ec9453bb18e5" width="300">
+
 
 Bu proje, SwiftUI kullanarak geliştirilen basit bir uçak bileti satın alma simülasyonudur. Kullanıcılar, uygulama aracılığıyla uçak bileti satın alma deneyimini simüle edebilir ve oluşturulan rastgele 6 haneli bilet numaraları ile işlem yapabilirler. 
 Proje, Core Data ve JSON veri depolama yöntemlerini kullanarak kullanıcıların uçuş bilgilerini yönetir ve saklar.
