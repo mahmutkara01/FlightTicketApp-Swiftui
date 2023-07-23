@@ -9,13 +9,18 @@ import SwiftUI
 
 struct SelectAirportCell: View {
     @ObservedObject var viewmodel = AirportsViewModel()
+    
     @State var selectedDepartureAirportID: String = ""
     @State var selectedArrivalAirportID: String = ""
+    
     @State private var DepartureDate = Date()
     @State private var ArrivalDate = Date()
+    
     @State private var showAlert = false
     @State private var alertMessage = ""
+    
     @State private var shouldNavigate = false
+    
     @ObservedObject var viewmodele = TicketDao()
     
     var body: some View {
@@ -164,15 +169,6 @@ struct SelectAirportCell: View {
         SelectAirportCell()
     }
 }
-/*
- if selectedArrivalAirportID == selectedDepartureAirportID {
-     print("aynı olamaz")
- } else if selectedArrivalAirportID.isEmpty || selectedDepartureAirportID.isEmpty {
-     print("boş olamaz")
- } else {
- print("sorun yok")
- }
- */
 
 struct SelectDate: View {
     @Binding var Date: Date

@@ -12,30 +12,28 @@ struct Home: View {
     @ObservedObject var viewmodel = AirportsViewModel()
     
     var body: some View {
-        ZStack {
-            arkaplan()
-            
-            VStack(spacing:5){
-            HStack{
-                Text("Uçak Bileti Satın Al")
-                    .font(.custom("Sen-ExtraBold", size: 25))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .lineLimit(2)
-                Spacer()
-                Image(systemName: "person.crop.circle")
-                    .font(.system(size: 35))
-                    .foregroundColor(Color.secondary)
-            }.padding(.horizontal,35)
-            
-            
-            VStack{
-                SelectAirportCell(selectedDepartureAirportID: "", selectedArrivalAirportID: "")
-                    .frame(width: 360,height: 330)
-                    .cornerRadius(30)
-                    .shadow(radius: 5,x:2,y:1)
-                    .padding()
-                
+            ZStack {
+                arkaplan()
+                VStack(spacing:5){
+                    HStack{
+                        Text("Uçak Bileti Satın Al")
+                            .font(.custom("Sen-ExtraBold", size: 25))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+                            .lineLimit(2)
+                        Spacer()
+                        Image(systemName: "person.crop.circle")
+                            .font(.system(size: 35))
+                            .foregroundColor(Color.secondary)
+                    }.padding(.horizontal,20)
+                    
+                    
+                VStack{
+                    SelectAirportCell(selectedDepartureAirportID: "", selectedArrivalAirportID: "")
+                        .frame(width: 360,height: 330)
+                        .cornerRadius(30)
+                        .shadow(radius: 5,x:2,y:1)
+                        .padding()
                     VStack{
                         HStack{
                             NavigationLink(destination: BuyTicketView()) {
@@ -50,13 +48,14 @@ struct Home: View {
                                     .padding(.trailing)
                                     .bold()
                             }
-                        }.padding(.horizontal)
+                        }.padding(.horizontal,5)
                         
+                        //MARK: Son Uçuşlarım
                         BuyTicketView()
                         
-                }.padding(.horizontal)
-            }
-        }.padding(.top)
+                    }
+                }
+            }.padding(.top)
         }
     }
 }

@@ -20,17 +20,18 @@ struct BuyTicketView: View {
         let tickets = viewmodele.ticketList[offset.first!]
         viewmodele.sil(tickets: tickets)
     } */
-    
+  
     var body: some View {
-        VStack{
-            ScrollView{
-                
-                    ForEach(viewmodele.ticketList, id: \.self) { ticket in
+        NavigationView{
+            VStack{
+                ScrollView{
+                    ForEach(viewmodele.ticketList.reversed(), id: \.self) { ticket in
                         ZStack{
                             MyTicketShape()
                                 .frame(width: 350,height: 120)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
+
                             VStack{
                                 ZStack {
                                     HStack {
@@ -74,7 +75,7 @@ struct BuyTicketView: View {
                                             
                                     }.padding(.leading)
                                     Spacer()
-                                }.padding(.top,15)
+                                }.padding(.top,10)
                                 
                             }.padding(10)
                         }
@@ -82,14 +83,13 @@ struct BuyTicketView: View {
                     }
                 }.onAppear{
                     viewmodele.ticketList.removeAll()
-                    viewmodele.ticketYukle()
-            }
-        }.padding(.horizontal, 12.0)
-            .padding(.top, 10)
-            .padding(.bottom, 8.0)
-            .frame(maxWidth: .infinity)
-            .cornerRadius(12).shadow(radius: 5,x:2,y:1).padding(.horizontal)
-            
+                    viewmodele.ticketYukle()}
+            }.padding(.horizontal, 12.0)
+                .padding(.top, 10)
+                .padding(.bottom, 8.0)
+                .frame(maxWidth: .infinity)
+                .cornerRadius(12).shadow(radius: 3,x:1,y:1).padding(.horizontal)
+        }
     }
 }
 

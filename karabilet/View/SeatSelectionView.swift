@@ -77,9 +77,7 @@ struct SeatSelectionView: View {
                         })
                     }.padding()
                     
-                    
                     HStack{
-                        
                         HStack {
                             RoundedRectangle(cornerRadius: 4)
                                 .stroke(Color.gray)

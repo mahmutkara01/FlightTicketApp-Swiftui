@@ -16,6 +16,7 @@ struct SheetPaymentView: View {
     @State var vSaat: String = "12.55"
     @State var kTuru: String = "Economy"
     
+
     var body: some View {
         
         NavigationView{
